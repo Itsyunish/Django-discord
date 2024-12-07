@@ -28,7 +28,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "django-render-discord-app.onrender.com"]
+
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', "django-render-discord-app.onrender.com"]
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'django-render-discord-app.onrender.com', 'django-discord-xxbw.onrender.com']
+
 
 
 # Application definition
