@@ -92,12 +92,33 @@ WSGI_APPLICATION = 'studydev.wsgi.application'
 #     }
 # }
 
-database_url = os.environ.get("DATABASE_URL")
 
-# Replacing the SQLite DATABASES configuration with PostgreSQL:
-DATABASES = {
-    'default': dj_database_url.parse(database_url)
-}
+import os
+import dj_database_url
+
+database_url = os.getenv('DATABASE_URL')  # Retrieve the environment variable
+
+if database_url:
+    DATABASES = {
+        'default': dj_database_url.parse(database_url)
+    }
+else:
+    # Fallback to a default database configuration
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+
+
+
+# database_url = os.environ.get("DATABASE_URL")
+
+# # Replacing the SQLite DATABASES configuration with PostgreSQL:
+# DATABASES = {
+#     'default': dj_database_url.parse(database_url)
+# }
 
 
 # Password validation
